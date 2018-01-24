@@ -16,7 +16,12 @@ const api = function () {
       name:name,
     });
 
-    $.ajax({url:`${BASE_URL}/items`,method:'POST', contentType:'application/json',data:newItem, success: callback});
+    $.ajax({
+      url:`${BASE_URL}/items`,
+      method:'POST', 
+      contentType:'application/json',
+      data:newItem, 
+      success: callback});
   };
 
 

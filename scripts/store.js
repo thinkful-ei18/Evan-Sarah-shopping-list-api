@@ -6,9 +6,9 @@ const store = (function(){
     this.items.push(item);
   };
 
-  // const findById = function(id) {
-
-  // };
+  const findById = function(id) {
+    return this.items.find(item => item.id === id);
+  };
 
   // const findAndToggleChecked = function(id) {
   //   const item = this.findById(id);
@@ -33,9 +33,9 @@ const store = (function(){
   const findAndUpdate = function (id,newData) {
     let item = this.items.find(item => item.id === id);
     console.log(item);
-    item = Object.assign({},item,newData);
+    Object.assign(item,newData);
     console.log(item);
-    
+    console.log(store.items);
   };
   
   const toggleCheckedFilter = function() {
@@ -52,7 +52,7 @@ const store = (function(){
     searchTerm: '',
 
     addItem,
-    // findById,
+    findById,
     findAndUpdate,
     // findAndDelete,
     toggleCheckedFilter,
