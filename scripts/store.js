@@ -7,7 +7,7 @@ const store = (function(){
   };
 
   const findById = function(id) {
-    return this.items.find(item => item.id === id);
+    return store.items.find(item => item.id === id);
   };
 
   // const findAndToggleChecked = function(id) {
@@ -15,9 +15,12 @@ const store = (function(){
   //   item.checked = !item.checked;
   // };
 
-  // const findAndDelete = function(id) {
-  //   this.items = this.items.filter(item => item.id !== id);
-  // };
+  const findAndDelete = function(id) {
+    let item = findById(id);
+    store.items = store.items.filter((storeItem) => {
+      return storeItem.id !== item.id;
+    }); 
+  };
 
   // const findAndUpdateName = function(id, name) {
   //   try {
@@ -54,7 +57,7 @@ const store = (function(){
     addItem,
     findById,
     findAndUpdate,
-    // findAndDelete,
+    findAndDelete,
     toggleCheckedFilter,
     setSearchTerm,
   };

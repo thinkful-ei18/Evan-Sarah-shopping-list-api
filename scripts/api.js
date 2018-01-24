@@ -36,10 +36,33 @@ const api = function () {
     });
   };
 
+
+  const deleteItem = (id, callback)=> {
+
+    $.ajax({
+      url:`${BASE_URL}/items/${id}`,
+      method:'DELETE',
+      // contentType:'application/json',
+      success:callback
+    });
+  };
+
+
   return {
     getItems,
     createItem,
-    updateItem
+    updateItem,
+    deleteItem
   };
 
 }();
+
+
+
+/* Delete Item Psuedocode
+
+1. Delete Item on the server
+2. Delete item in the store
+3. Re-render the store
+
+*/

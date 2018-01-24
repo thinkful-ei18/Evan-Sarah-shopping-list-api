@@ -56,7 +56,7 @@ const shoppingList = (function(){
   
   
   function handleNewItemSubmit() {
-    $('#js-shopping-list-form').submit(function (event) {
+    $('#js-shopping-list-form').on('submit',function (event) {
       event.preventDefault();
       const newItemName = $('.js-shopping-list-entry').val();
       $('.js-shopping-list-entry').val('');
@@ -91,10 +91,10 @@ const shoppingList = (function(){
     $('.js-shopping-list').on('click', '.js-item-delete', event => {
       // get the index of the item in store.items
       const id = getItemIdFromElement(event.currentTarget);
-      // delete the item
-      store.findAndDelete(id);
-      // render the updated shopping list
-      render();
+      api.deleteItem(id,() => {
+        store.findAndDelete(id);
+        render();
+      });
     });
   }
   
@@ -119,6 +119,7 @@ const shoppingList = (function(){
   
   function handleShoppingListSearch() {
     $('.js-shopping-list-search-entry').on('keyup', event => {
+      event.preventDefault();
       const val = $(event.currentTarget).val();
       store.setSearchTerm(val);
       render();
