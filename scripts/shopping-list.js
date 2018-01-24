@@ -1,5 +1,5 @@
-/* global store */
-
+/* global store api */
+'use strict';
 // eslint-disable-next-line no-unused-vars
 const shoppingList = (function(){
 
@@ -63,10 +63,10 @@ const shoppingList = (function(){
       // store.addItem(newItemName);
       api.createItem(newItemName,(newItem) => {
         store.addItem(newItem);
-          render();    
+        render();    
       });
     });
-  };
+  }
 
   
   function getItemIdFromElement(item) {
